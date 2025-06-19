@@ -23,6 +23,8 @@ A file is uploaded to an Amazon S3 bucket.
 
 S3 triggers a Lambda function automatically.
 
+![Upload](<images/Screenshot 2025-06-19 143329.png>)
+
 The Lambda function:
 
 Reads file info (like the name and time of upload)
