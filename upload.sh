@@ -1,24 +1,31 @@
 #!/bin/bash
 
-# ========= Configuration =========
-BUCKET_NAME="groupb-serverless-app-upload-bucket"  
-FILE_PREFIX="testfile"
-EXT="txt"
-REGION="ca-central-1"
+# Exit immediately if a command exits with a non-zero status
+set -euo pipefail
 
-# ========= Generate Unique File =========
-RANDOM_NUM=$((1 + RANDOM % 10000))
-DATE=$(date +%Y-%m-%dT%H-%M-%S)
-FILENAME="${FILE_PREFIX}-${RANDOM_NUM}-${DATE}.${EXT}"
+# Define the S3 bucket name and target prefix
+S3_BUCKET="groupb-serverless-app-upload-bucket"
+S3_PREFIX="inbound"
+NUM_FILES=10
 
-echo "Generating test file: $FILENAME"
-echo "Test file created at $DATE" > "$FILENAME"
+echo "Uploading $NUM_FILES test files to s3://$S3_BUCKET/$S3_PREFIX/"
 
-# ========= Upload to S3 =========
-echo "Uploading $FILENAME to S3 bucket: $BUCKET_NAME"
-aws s3 cp "$FILENAME" "s3://$BUCKET_NAME/" --region "$REGION"
+# Loop to create and upload files
+for i in $(seq 1 $NUM_FILES); do
+    RANDOM_NUMBER=$((1 + RANDOM % 1000))
+    DATE_TAG=$(date +%Y-%m-%d)
+    FILENAME="filename-$RANDOM_NUMBER-$DATE_TAG.txt"
 
-# ========= Clean Up Local File =========
-rm "$FILENAME"
+    # Create test file
+    echo "This is test file number $i with random ID $RANDOM_NUMBER" > "$FILENAME"
 
-echo "✅ Upload complete. Check your email for SNS notification."
+    # Upload to S3
+    echo "Uploading $FILENAME to s3://$S3_BUCKET/$S3_PREFIX/"
+    aws s3 cp "$FILENAME" "s3://$S3_BUCKET/$S3_PREFIX/"
+
+    # Clean up local file
+    rm -f "$FILENAME"
+done
+
+echo "✅ Upload complete!"
+

@@ -23,7 +23,7 @@ A file is uploaded to an Amazon S3 bucket.
 
 S3 triggers a Lambda function automatically.
 
-![Upload](<images/Screenshot 2025-06-19 143329.png>)
+![upload](<images/Screenshot 2025-06-19 222648.png>)
 
 The Lambda function:
 
@@ -47,7 +47,7 @@ Amazon S3 can handle a huge number of file uploads per second.
 
 It scales automatically and reliably, with very high availability.
 
-![S3](<images/Screenshot 2025-06-19 143730.png>)
+![s3](<images/Screenshot 2025-06-19 222814.png>)
 
 **Lambda**
 
@@ -79,7 +79,7 @@ All logs and metrics are captured automatically.
 
 You can scale monitoring and create alarms without worrying about infrastructure.
 
-![Cloudwatch](<images/Screenshot 2025-06-19 144127.png>)
+![cloudwatch](<images/Screenshot 2025-06-19 223005.png>)
 
 🛡 **How It Handles Failures**
 
@@ -119,13 +119,13 @@ Everything that happens (or fails) is logged to CloudWatch Logs.
 
 You can set up CloudWatch Alarms to get notified if, say, the Lambda function fails multiple times in a row.
 
-**Security and Isolation**
+![logs](<images/Screenshot 2025-06-19 223715.png>)
 
-IAM Roles follow least privilege:
+**Security**
 
-Lambda only has access to S3 read, DynamoDB write, SNS publish.
+IAM Roles follow the principle of least privilege:
 
-Environment variables securely pass table/topic names.
+Lambda has only the necessary permissions to interact with S3, DynamoDB, and SNS.
 
-No hard-coded secrets.
+Environment Variables are used to pass sensitive configuration securely (no hardcoded values).
 
