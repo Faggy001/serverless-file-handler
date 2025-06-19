@@ -55,6 +55,8 @@ This means if 1,000 files are uploaded at once, Lambda can process them in paral
 
 You don’t need to configure or manage any servers.
 
+![Lambda](<images/Screenshot 2025-06-19 144007.png>)
+
 **DynamoDB**
 
 The table uses on-demand capacity, so it scales up (and down) based on how many write requests it gets.
