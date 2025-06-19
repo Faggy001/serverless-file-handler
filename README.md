@@ -13,7 +13,7 @@ This project is a simple but powerful serverless application built with AWS serv
 
 Below is an overview of how this app scales to handle larger loads and how it deals with errors when things don’t go as planned.
 
-![Architecture](<images/Image Jun 19, 2025, 03_21_17 PM.png>)
+![Architecture](images/serverless_app.png)
 
 ⚙️ **How the App Works**
 
