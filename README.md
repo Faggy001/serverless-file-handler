@@ -73,6 +73,8 @@ Amazon SNS can fan out messages to multiple subscribers, instantly.
 
 It’s a good fit for alerting because it can send messages in near real time, even under large bursts.
 
+![SNS](<images/Screenshot 2025-06-29 102555.png>)
+
 **CloudWatch**
 
 All logs and metrics are captured automatically.
@@ -106,6 +108,8 @@ For email delivery, SNS tries for a while, but eventually drops undeliverable me
 If your email subscription isn’t confirmed, you won’t receive alerts — but the Lambda will log that failure.
 
 ![SNS](<images/Screenshot 2025-06-19 143421.png>)
+
+![Sns](<images/Screenshot 2025-06-29 102519.png>)
 
 **S3 Event Duplication**
 
